@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://coot2yio161yq"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(24.0838, 0, 0, 0, 24.0838, 0, 0, 0, 24.0838, 0, 0, 0)
+use_collision = true
+flip_faces = true
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D2"]
+transform = Transform3D(0.275866, 0, 0, 0, 0.275866, 0, 0, 0, 0.275866, -0.575586, -0.361867, -0.0136975)
+use_collision = true
+flip_faces = true
+size = Vector3(1, 0.996704, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D2/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.941774, 0, 0)
+use_collision = true
+flip_faces = true
+size = Vector3(1, 0.996704, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D2/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86902, 0, 0)
+use_collision = true
+flip_faces = true
+size = Vector3(1, 0.996704, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D2/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.76719, 0, 0)
+use_collision = true
+flip_faces = true
+size = Vector3(1, 0.996704, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGBox3D2/CSGBox3D3"]
+transform = Transform3D(3.70276, 0, 0, 0, 3.70276, 0, 0, 0, 3.70276, -5.09872, 0, 0)
+use_collision = true
+flip_faces = true
+size = Vector3(1, 0.996704, 1)
