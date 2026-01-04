@@ -1,26 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://coot2yio161yq"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yp4wr"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+[ext_resource type="PackedScene" uid="uid://225pwass0qsn" path="res://Scenes/vehicle_instance.tscn" id="1_a02cp"]
 
-[sub_resource type="Sky" id="Sky_a02cp"]
-sky_material = SubResource("ProceduralSkyMaterial_yp4wr")
+[sub_resource type="BoxMesh" id="BoxMesh_go701"]
+size = Vector3(4, 3, 9)
 
-[sub_resource type="Environment" id="Environment_go701"]
-background_mode = 2
-sky = SubResource("Sky_a02cp")
-tonemap_mode = 2
-glow_enabled = true
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5a7ea"]
+points = PackedVector3Array(2, 1.5, 4.5, 2, -1.5, 4.5, 2, 1.5, -4.5, -2, 1.5, 4.5, -2, -1.5, 4.5, 2, -1.5, -4.5, -2, 1.5, -4.5, -2, -1.5, -4.5)
 
 [node name="Node3D" type="Node3D"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_go701")
-
-[node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(24.0838, 0, 0, 0, 24.0838, 0, 0, 0, 24.0838, 0, 0, 0)
@@ -56,3 +44,11 @@ transform = Transform3D(3.70276, 0, 0, 0, 3.70276, 0, 0, 0, 3.70276, -5.09872, 0
 use_collision = true
 flip_faces = true
 size = Vector3(1, 0.996704, 1)
+
+[node name="testtruck" parent="." instance=ExtResource("1_a02cp")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="testtruck"]
+mesh = SubResource("BoxMesh_go701")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="testtruck"]
+shape = SubResource("ConvexPolygonShape3D_5a7ea")
