@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://coot2yio161yq"]
+[gd_scene load_steps=8 format=3 uid="uid://coot2yio161yq"]
 
-[ext_resource type="PackedScene" path="res://Scenes/vehicle_instance.tscn" id="1_a02cp"]
+[ext_resource type="PackedScene" uid="uid://225pwass0qsn" path="res://Scenes/vehicle_instance.tscn" id="1_a02cp"]
+[ext_resource type="PackedScene" uid="uid://ccjemvmj8i0or" path="res://Scenes/player.tscn" id="2_go701"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -72,3 +73,6 @@ mesh = SubResource("BoxMesh_go701")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="testtruck"]
 shape = SubResource("ConvexPolygonShape3D_5a7ea")
+
+[node name="Player" parent="." instance=ExtResource("2_go701")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.46395, 0)
