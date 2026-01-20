@@ -1,3 +1,3 @@
-[gd_scene load_steps=0 format=3 uid="uid://225pwass0qsn"]
+[gd_scene format=3 uid="uid://225pwass0qsn"]
 
 [node name="VehicleInstance" type="VehicleBody3D"]
