@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://coot2yio161yq"]
 
-[ext_resource type="PackedScene" uid="uid://225pwass0qsn" path="res://Scenes/vehicle_instance.tscn" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://ccjemvmj8i0or" path="res://Scenes/player.tscn" id="2_go701"]
+[ext_resource type="Script" uid="uid://d18yhv3mkrv7p" path="res://Scripts/camera_pivot.gd" id="3_5a7ea"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -19,8 +19,8 @@ glow_enabled = true
 [sub_resource type="BoxMesh" id="BoxMesh_go701"]
 size = Vector3(4, 3, 9)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5a7ea"]
-points = PackedVector3Array(2, 1.5, 4.5, 2, -1.5, 4.5, 2, 1.5, -4.5, -2, 1.5, 4.5, -2, -1.5, 4.5, 2, -1.5, -4.5, -2, 1.5, -4.5, -2, -1.5, -4.5)
+[sub_resource type="BoxShape3D" id="BoxShape3D_5a7ea"]
+size = Vector3(4, 3, 9)
 
 [node name="Node3D" type="Node3D"]
 
@@ -66,20 +66,23 @@ use_collision = true
 flip_faces = true
 size = Vector3(1, 0.996704, 1)
 
-[node name="testtruck" parent="." instance=ExtResource("1_a02cp")]
+[node name="testtruck" type="VehicleBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="testtruck"]
 mesh = SubResource("BoxMesh_go701")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="testtruck"]
-shape = SubResource("ConvexPolygonShape3D_5a7ea")
+shape = SubResource("BoxShape3D_5a7ea")
 
 [node name="Player" parent="." instance=ExtResource("2_go701")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.46395, 0)
 
 [node name="CameraPivot" type="Node3D" parent="."]
+script = ExtResource("3_5a7ea")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
 spring_length = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+
+[connection signal="ready" from="." to="Player" method="moveCamera"]
